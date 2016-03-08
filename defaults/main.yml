@@ -1,7 +1,8 @@
 ---
-name: exe
-upstream:
-    host: 1.2.3.4
-    port: 99
-domain: example.me
-path: "{{ ansible_user_dir }}/docker/lb"
+nginx_load_balancer:
+    name: exe
+    upstream:
+        host: 1.2.3.4
+        port: 99
+    domain: example.me
+    path: "{{ ansible_user_dir }}/docker/lb"

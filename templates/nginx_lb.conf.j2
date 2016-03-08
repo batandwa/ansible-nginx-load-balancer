@@ -1,12 +1,12 @@
-upstream {{ name }} {
-    server {{ upstream.host }}:{{ upstream.port }};
+upstream {{ nginx_load_balancer.name }} {
+    server {{ nginx_load_balancer.upstream.host }}:{{ nginx_load_balancer.upstream.port }};
 }
 
 server {
     listen 80;
-    server_name {{ domain }};
+    server_name {{ nginx_load_balancer.domain }};
     location / {
-        proxy_pass http://{{ name }};
+        proxy_pass http://{{ nginx_load_balancer.name }};
         proxy_set_header Host $host;
         proxy_set_header X-Forwarded-For $remote_addr;
     }

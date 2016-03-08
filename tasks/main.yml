@@ -1,7 +1,7 @@
 ---
 - name: Create destination directory
   file:
-      path: "{{ path }}"
+      path: "{{ nginx_load_balancer.path }}"
       state: directory
   tags:
       - nginx-load-balancer
@@ -9,7 +9,7 @@
 - name: Configure load-balancer
   template:
       src: nginx_lb.conf.j2
-      dest: "{{ path }}/nginx_lb.conf"
+      dest: "{{ nginx_load_balancer.path }}/nginx_lb.conf"
   tags:
       - nginx-load-balancer
   notify:
@@ -18,7 +18,7 @@
 - name: Configure Docker Compose
   template:
       src: docker-compose.yml.j2
-      dest: "{{ path }}/docker-compose.yml"
+      dest: "{{ nginx_load_balancer.path }}/docker-compose.yml"
   tags:
       - nginx-load-balancer
   notify:
