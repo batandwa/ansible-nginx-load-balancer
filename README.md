@@ -1,7 +1,7 @@
-Role Name
-=========
+Nginx Load-balancer
+===================
 
-Configures and executes an Nginx load-balancer Docker Container.
+An Ansible role that configures and executes an Nginx load-balancer Docker Container.
 
 Requirements
 ------------
