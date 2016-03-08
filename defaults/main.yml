@@ -1,10 +1,15 @@
 ---
 nginx_load_balancer:
-    path: "{{ ansible_user_dir }}/docker/lb"
+    # The services to be configured.
     servers:
+        # The name of the service. Will be used in the upstream
+        # server directive.
+        # This should be an array of the different services.
         - name: exe1
           upstream:
+              # The upstream host.
               host: 1.2.3.4
+              # The upstream port.
               port: 91
           domain: example.me
         - name: exe2

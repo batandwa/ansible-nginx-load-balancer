@@ -1,8 +1,14 @@
 ---
 nginx_load_balancer:
+    # Where the Docker Compose configuration files will be stored.
+    path: "{{ ansible_user_dir }}/lb"
+
     container:
+        # The source image.
         image: nginx
+        # The name of the container.
         name: nginx-load-balancer
+        # The ports that will be published by the container.
         ports:
             - "80:80"
             - "443:443"

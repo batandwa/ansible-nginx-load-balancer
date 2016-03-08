@@ -1,4 +1,5 @@
 {% for server in nginx_load_balancer.servers %}
+{# TODO: Allow for more upstreams. #}
 upstream {{ server.name }} {
     server {{ server.upstream.host }}:{{ server.upstream.port }};
 }
