@@ -13,7 +13,7 @@
   tags:
       - nginx-load-balancer
   notify:
-      - restart nginx load-balancer container.
+      - restart nginx load-balancer container
 
 - name: Configure Docker Compose
   template:
