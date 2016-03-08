@@ -1,2 +1,8 @@
 ---
-# handlers file for batandwa.nginx-load-balancer
+# TODO: This should use the docker module.
+- name: restart nginx load-balancer container
+  shell: docker-compose restart
+  args:
+      chdir: "{{ path }}"
+  tags:
+      - nginx-load-balancer
