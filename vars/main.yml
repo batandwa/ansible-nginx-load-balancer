@@ -1,2 +1,8 @@
 ---
-# vars file for batandwa.nginx-load-balancer
+nginx_load_balancer:
+    container:
+        image: nginx
+        name: nginx-load-balancer
+        ports:
+            - "80:80"
+            - "443:443"
