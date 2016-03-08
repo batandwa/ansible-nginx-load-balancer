@@ -1,8 +1,14 @@
 ---
 nginx_load_balancer:
-    name: exe
-    upstream:
-        host: 1.2.3.4
-        port: 99
-    domain: example.me
     path: "{{ ansible_user_dir }}/docker/lb"
+    servers:
+        - name: exe1
+          upstream:
+              host: 1.2.3.4
+              port: 91
+          domain: example.me
+        - name: exe2
+          upstream:
+              host: 5.6.7.8
+              port: 92
+          domain: site2.example.me
