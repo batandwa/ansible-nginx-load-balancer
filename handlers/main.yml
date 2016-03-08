@@ -1,7 +1,6 @@
 ---
-# TODO: This should use the docker module.
 - name: restart nginx load-balancer container
-  shell: docker-compose restart
+  shell: docker-compose up -d
   args:
       chdir: "{{ path }}"
   tags:
