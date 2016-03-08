@@ -1,0 +1,9 @@
+nginx:
+    image: {{ nginx_load_balancer.container.image }}
+    ports:
+{% for port in nginx_load_balancer.container.ports %}
+        - {{ port }}
+{% endfor %}
+    volumes:
+        - './nginx_lb.conf:/etc/nginx/conf.d/lb.conf:ro'
+    restart: always

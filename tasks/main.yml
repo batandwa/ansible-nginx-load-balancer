@@ -1,29 +1,25 @@
 ---
-- name: Configure
+- name: Create destination directory
+  file:
+      path: "{{ path }}"
+      state: directory
+  tags:
+      - nginx-load-balancer
+
+- name: Configure load-balancer
   template:
       src: nginx_lb.conf.j2
-      dest: "{{ path }}/config/nginx_lb.conf"
+      dest: "{{ path }}/nginx_lb.conf"
+  tags:
+      - nginx-load-balancer
+  notify:
+      - restart nginx load-balancer container.
+
+- name: Configure Docker Compose
+  template:
+      src: docker-compose.yml.j2
+      dest: "{{ path }}/docker-compose.yml"
   tags:
       - nginx-load-balancer
   notify:
       - restart nginx load-balancer container
-# - name: Loadbalancer - Get setups
-#   git:
-#     repo: "{{ repo }}"
-#     dest: "{{ path }}"
-#     accept_hostkey: yes
-#   tags:
-#     - nginx-load-balancer
-# - name: Loadbalancer - Ignore permission changes
-#   shell: git config core.fileMode false
-#   args:
-#     chdir: "{{ path }}"
-#   tags:
-#     - nginx-load-balancer
-#
-# - name: Loadbalancer - Run
-#   shell: docker-compose up -d
-#   args:
-#     chdir: "{{ path }}"
-#   tags:
-#     - nginx-load-balancer
