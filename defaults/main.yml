@@ -1,10 +1,7 @@
 ---
-nginx_load_balancer:
-    name: invoiceninja.tools
-    upstream:
-        host: 41.79.78.58
-        port: 39001
-    domain: invoiceninja.tools.batandwa.me
-
-    repo: git@github.com:batandwa/docker-lb.git
-    path: "{{ ansible_user_dir }}/docker/lb"
+name: exe
+upstream:
+    host: 1.2.3.4
+    port: 99
+domain: example.me
+path: "{{ ansible_user_dir }}/docker/lb"
