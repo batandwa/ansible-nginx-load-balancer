@@ -1,7 +1,5 @@
 ---
 - name: restart nginx load-balancer container
-  shell: docker-compose up -d
+  shell: docker-compose restart
   args:
-      chdir: "{{ path }}"
-  tags:
-      - nginx-load-balancer
+      chdir: "{{ nginx_load_balancer.path }}"
