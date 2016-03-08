@@ -1,2 +1,27 @@
 ---
-# tasks file for batandwa.nginx-load-balancer
+- name: Loadbalancer - Configure
+  template:
+    src: templates/nginx_lb.conf.j2
+    dest: "{{ path }}/config/nginx_lb.conf"
+  tags:
+    - lb
+- name: Loadbalancer - Get setups
+  git:
+    repo: "{{ repo }}"
+    dest: "{{ path }}"
+    accept_hostkey: yes
+  tags:
+    - lb
+- name: Loadbalancer - Ignore permission changes
+  shell: git config core.fileMode false
+  args:
+    chdir: "{{ path }}"
+  tags:
+    - lb
+
+- name: Loadbalancer - Run
+  shell: docker-compose up -d
+  args:
+    chdir: "{{ path }}"
+  tags:
+    - lb
